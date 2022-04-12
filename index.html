@@ -1,0 +1,259 @@
+<!-- Ensure using Bootstrap v4.6 please! -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+    <title>TaskManager</title>
+    
+    <!-- OUR CUSTOM CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    
+    <!-- FONTS -->
+<script src="https://kit.fontawesome.com/998b99be95.js" crossorigin="anonymous"></script>
+
+    <!-- CALENDAR LINKS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  </head>
+  
+  <body>
+       
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+     <div class="row">
+            <div class="col-lg-4">
+ <img src="image/team4_tasklogo-1.png" alt="LOGO" class="img-fluid">
+               </div> 
+<!--        <div class="col-lg-8"> -->
+<!-- <h1 class="display-4">TASQTEAM</h1>  -->
+<!--     <p class="lead text-center" style="">An effecienty way of working </p>  -->
+      </div>
+       </div>
+  </div>
+<!--     modal       -->
+      <div id="endModal" class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title text-center"></h2>
+          </div>
+          <div class="modal-body text-center">
+            <h2>You're missing a required input, please fill out before continuing.</h2>
+          </div>
+          <div class="modal-footer text-center">
+            <button type="button" class="btn btn-return" data-dismiss="modal" onclick="closeModal()">Return</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- add task  toast     -->
+<div  class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+  <div id="addToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+    <div class="toast-header">
+<!--       <img src="" class="rounded mr-2" alt="..."> -->
+      <i class="fa-solid fa-check mr-2"></i>
+      <strong class="mr-auto">Task</strong>
+<!--       <small>11 mins ago</small> -->
+      <button type="button" class="ml-3 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Added task successfully. 
+    </div>
+  </div>
+</div> <!-- end of toast -->
+
+     <!-- delete task  toast     -->
+<div  class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+  <div id="deleteToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+    <div class="toast-header">
+<!--       <img src="" class="rounded mr-2" alt="..."> -->
+      <i class="fa-solid fa-check mr-2"></i>
+      <strong class="mr-auto">Task</strong>
+<!--       <small>11 mins ago</small> -->
+      <button type="button" class="ml-3 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Deleted task successfully. 
+    </div>
+  </div>
+</div> <!-- end of toast -->
+    
+<!-- main container -->
+<div class='container'>
+
+  <div class='row'>
+    <div class="col-md-4">
+      
+      <!-- CALENDAR START  -->
+           <div class="row">
+           <div class="calendar">
+						<div class="header">
+							<a data-action="prev-month" href="javascript:void(0)" title="Previous Month"><i></i></a>
+							<div class="text" data-render="month-year"></div>
+							<a data-action="next-month" href="javascript:void(0)" title="Next Month"><i></i></a>
+						</div>
+						<div class="months" data-flow="left">
+							<div class="month month-a">
+								<div class="render render-a"></div>
+							</div>
+							<div class="month month-b">
+								<div class="render render-b"></div>
+							</div>
+						</div>
+					</div>
+             </div>
+    </div>
+    <!-- CALENDAR END -->
+    
+<!--   ??? vvvv  -->
+  <div class='col-md-8'>
+    
+  <!--add new task form middle section -->
+    <div class="taskmanager"> 
+      
+      <form id='newTaskForm'>
+        <div class="form-group">
+          <label for="name">Name of Task</label>
+         <input type='text' id='taskName' name='name' class='form-control'>
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" rows="1"></textarea>
+        </div>
+  
+         <div class="form-group">
+          <label for="assignedto">Assign To</label>
+          <select multiple class="form-control" id="assignedto">
+            <option>Afua Anochi</option>
+            <option>Alemnesh Dadi</option>
+            <option>Ryan Christian Fernandez</option>
+            <option>Joyce Huang</option>
+            <option>Bo Latt</option>
+            <option>Roxanne Moreira</option>
+            <option>Vanessa Righi</option>
+            <option>Bezawit Tamiru</option>   
+            <option>Ky Morris</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Priority Level</label>
+          <select id="priority" class="custom-select">
+            <option >Low</option>
+            <option >Medium</option>
+            <option>High</option>
+        </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="custom-select" id='status'>
+            <option >To Do</option>
+            <option >In Progress</option>
+            <option >Completed</option>
+        </select>
+        </div>
+        
+        <div class="form-group ">
+          <label for="newTaskDueDate">Due Date</label>
+          <input type="date" class="form-control" id="newTaskDueDate">
+        </div>
+  
+        <div class ="button"> <button type="submit" class="btn btn-secondary btn-lg" id='addBtn' >Add Task</button> </div>
+      </form> 
+      
+
+      
+  <!-- end of new task form -->
+    </div>
+    <br>
+
+    <div id="tasksList">
+    </div>
+ 
+</div>
+  </div>
+</div>
+    <br>
+<!-- end of main container  -->
+<!-- Footer START -->
+    <div clas='container-fluid'>
+    <footer class="bg-light text-center text-lg-start ">
+  <!-- Grid container -->
+  <div class="container-fluid p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text">Task Manager Project</h5>
+
+        <p class="text-left">
+         In this project proposed by Generation USA to the students of the Junior Web Developer course, we created a Task Planner web app from scratch. The goal of this group-work is to give the students the opportunity to practice technical and non-technical skills. The project was done in 3 sprints of approximately 10 hours each. 
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text">Group Members</h5>
+        <table  style="width:100%">
+          <tr >
+            <td class="effect"><a href="https://www.linkedin.com/in/bo-latt/" target="_blank">Bo Latt </a></td>
+            <td class="effect"><a href="www.linkedin.com/in/bezawitt" target="_blank">Bezawit Tamiru</td> 
+            <td class="effect"><a href=" 596269">Claudia Rogers</a></td>
+           </tr> 
+
+          <tr>
+            <td class="effect"><a href="https://www.linkedin.com/in/florantha-brice-emile-6557889a/" target="_blank">Florantha B. Emile</td>
+            <td class="effect"><a href="https://www.linkedin.com/in/joycehuang777/" target="_blank">Joyce Huang</a></td>
+            <td class="effect"><a href="https://www.linkedin.com/in/ky-morris-84481a170/" target="_blank">Ky Morris</td>
+          </tr>
+
+          <tr>
+            <td class="effect"><a href="https://www.linkedin.com/in/roxanne-moreira-1a428899/" target="_blank">Roxanne Moreira</td>
+            <td class="effect"><a href="https://www.linkedin.com/in/ryan-christian-fernandez-0a5b24182/" target="_blank">Ryan C. Fernandez</a></td>
+            <td class="effect"><a href= "https://www.linkedin.com/in/vanessa-righi/" target="_blank">Vanessa Righi</a></td>
+          </tr>
+          
+        </table>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <p class="text-dark"> © 2022 by CodeBusters </p>
+  </div>
+  <!-- Copyright -->
+</footer>
+    </div>
+<!--   Footer END -->
+    
+   <!-- javascript CALENDAR START -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+    <!-- script END -->
+       
+    <!-- BOOTSTRAP JS -->
+
+<script src='./js/index.js' defer></script>
+<script src="./js/taskManager.js"></script>
+ 
+  </body>
+</html>

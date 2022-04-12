@@ -1,0 +1,68 @@
+
+/* title jumbotron */
+.jumbotron {
+  height: 250px;
+}
+
+
+.col-lg-4 img {
+   height: 160px;
+  width: 200px;
+  
+}
+h1 {
+  text-align: center;
+}
+
+.form-group {
+  padding: 0px 20px;
+  
+}
+
+.button {
+  text-align: center;
+}
+
+.col-md-4 {
+  padding-top: 50px;
+}
+
+.col-md-8 {
+  margin: 0px;
+}
+
+/* tasks */
+#to-do-task{
+  background-color:#E94F37;
+  color: white;
+  border: #E94F37;
+}
+#on-going-task{
+ background-color:#e6c229;
+  color: white;
+  border: #e6c229;
+}
+
+#completed-task{
+  background-color: #69B578;
+  color: white;
+  border:  #69B578;
+}
+
+.jumbotron {
+  background-image: url("../image/zoom-meeting.jpg");
+  background-size: cover;
+}
+
+.effect a{
+  color: #383838;
+}
+
+.effect:hover a{
+  color: #70c5f0;
+  
+}
+
+td {
+  text-align: left;
+}

@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2"
+  },
+  "name": "task-managment-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EsterTheOtter/Task-Managment-Website-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EsterTheOtter/Task-Managment-Website-/issues"
+  },
+  "homepage": "https://github.com/EsterTheOtter/Task-Managment-Website-#readme",
+  "description": ""
+}
